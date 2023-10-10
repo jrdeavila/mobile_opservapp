@@ -70,7 +70,7 @@ class _DashboardCardState extends State<DashboardCard>
                         top: Radius.circular(20),
                       ),
                       image: DecorationImage(
-                        image: AssetImage(widget.image),
+                        image: NetworkImage(widget.image),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -79,7 +79,7 @@ class _DashboardCardState extends State<DashboardCard>
                 Expanded(
                   flex: 1,
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 5.0),
                     child: Text(
                       widget.title,
                       textAlign: TextAlign.center,

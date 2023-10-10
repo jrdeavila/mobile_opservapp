@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:mobile_opservapp/lib.dart';
 
-class DashboardView extends GetView<DashboardController> {
-  const DashboardView({super.key});
+class DashboardView extends StatelessWidget {
+  const DashboardView({
+    super.key,
+    this.title,
+    this.image,
+    this.children = const [],
+  });
+
+  final String? title;
+  final String? image;
+  final List<Widget> children;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +25,7 @@ class DashboardView extends GetView<DashboardController> {
               floating: true,
               backgroundColor: Colors.transparent,
               toolbarHeight: 100,
-              leadingWidth: 220.0,
+              leadingWidth: 200.0,
               leading: Padding(
                 padding: const EdgeInsets.only(left: 16.0),
                 child: GestureDetector(
@@ -26,13 +34,9 @@ class DashboardView extends GetView<DashboardController> {
                   ),
                 ),
               ),
-              actions: [
-                UserAccountTag(
-                  onTap: () {
-                    controller.onIndexChanged(3);
-                  },
-                ),
-                const SizedBox(width: 20),
+              actions: const [
+                UserAccountTag(),
+                SizedBox(width: 20),
               ],
             ),
             SliverToBoxAdapter(
@@ -44,9 +48,9 @@ class DashboardView extends GetView<DashboardController> {
                     Align(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        "Dashboard",
+                        title ?? "Dashboard",
                         style: TextStyle(
-                          color: Theme.of(context).colorScheme.onSecondary,
+                          color: Theme.of(context).colorScheme.onPrimary,
                           fontWeight: FontWeight.bold,
                           fontSize: 30,
                         ),
@@ -72,6 +76,12 @@ class DashboardView extends GetView<DashboardController> {
             child: Container(
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.secondary,
+                image: image != null
+                    ? DecorationImage(
+                        image: NetworkImage(image!),
+                        fit: BoxFit.cover,
+                      )
+                    : null,
               ),
             )),
         Expanded(
@@ -102,20 +112,7 @@ class DashboardView extends GetView<DashboardController> {
           crossAxisSpacing: 16,
           mainAxisSpacing: 16,
         ),
-        children: [
-          DashboardCard(
-            title: "Empresas Creadas",
-            image: "assets/img/active_entity.jpg",
-            onTap: () {
-              Get.toNamed(createdBusinessRoute);
-            },
-          ),
-          DashboardCard(
-            title: "Empresas Renovadas",
-            image: "assets/img/renew_entity.jpg",
-            onTap: () {},
-          ),
-        ],
+        children: children,
       ),
     );
   }

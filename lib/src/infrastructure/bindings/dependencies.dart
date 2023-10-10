@@ -8,7 +8,7 @@ abstract class DioModule {
   @lazySingleton
   Dio get dio => Dio(
         BaseOptions(
-          baseUrl: "http://localhost:8080/",
+          baseUrl: baseUrl,
           followRedirects: false,
           headers: {
             "X-Metabase-Session": "1d603365-60e8-49a9-86f7-5ea28acff4d1",

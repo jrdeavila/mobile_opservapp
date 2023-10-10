@@ -15,7 +15,17 @@ class DashboardScreen extends GetView<DashboardController> {
             children: [
               Expanded(
                 child: IndexedStack(index: controller.currentIndex, children: [
-                  const DashboardView(),
+                  Obx(() => DashboardView(
+                        children: controller.sections
+                            .map((e) => DashboardCard(
+                                  title: e.title,
+                                  image: sectionImageUrl(e.image),
+                                  onTap: () {
+                                    controller.onSectionTap(e);
+                                  },
+                                ))
+                            .toList(),
+                      )),
                   Container(
                     color: Colors.green,
                   ),

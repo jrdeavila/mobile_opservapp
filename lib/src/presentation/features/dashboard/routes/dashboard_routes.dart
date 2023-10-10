@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:mobile_opservapp/lib.dart';
 
 const dashboardRoute = '/dashboard';
-const createdBusinessRoute = '/created-business';
+const sectionDetailsRoute = '/section-details';
 
 final dashboardPages = [
   GetPage(
@@ -11,7 +11,8 @@ final dashboardPages = [
     binding: DashboardBindings(),
   ),
   GetPage(
-    name: createdBusinessRoute,
-    page: () => const CreatedBusinessScreen(),
+    name: sectionDetailsRoute,
+    page: () => const SectionDetailsScreen(),
+    binding: SectionDetailsBindings(),
   ),
 ];
