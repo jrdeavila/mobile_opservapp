@@ -79,10 +79,11 @@ class _DashboardViewState extends State<DashboardView> {
                 _buildTopBar(),
                 const SizedBox(height: 20),
                 Text(
-                  title,
+                  title.toUpperCase(),
                   style: TextStyle(
                     color: Theme.of(context).colorScheme.onSecondary,
-                    fontSize: 20.0,
+                    fontSize: 22.0,
+                    fontWeight: FontWeight.bold,
                   ),
                   textAlign: TextAlign.start,
                 ),
