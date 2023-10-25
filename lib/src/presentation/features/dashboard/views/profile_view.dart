@@ -36,16 +36,16 @@ class ProfileView extends GetView<SessionController> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Container(
-                height: 100,
-                width: 100,
+                height: 150,
+                width: 150,
                 decoration: BoxDecoration(
                   color: Theme.of(context).colorScheme.secondary,
                   borderRadius: BorderRadius.circular(25),
                 ),
                 child: Icon(
                   Icons.person,
-                  color: Theme.of(context).colorScheme.onSecondary,
-                  size: 50,
+                  color: Theme.of(context).colorScheme.onPrimary,
+                  size: 100,
                 ),
               ),
               const SizedBox(
@@ -65,8 +65,11 @@ class ProfileView extends GetView<SessionController> {
         Positioned.fill(
           top: MediaQuery.of(context).size.height * 0.3,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
+            // mainAxisAlignment: MainAxisAlignment.end,
             children: [
+              const SizedBox(
+                height: 100,
+              ),
               ListTile(
                 leading: Icon(
                   Icons.logout,
@@ -91,6 +94,13 @@ class ProfileView extends GetView<SessionController> {
                 },
               ),
             ],
+          ),
+        ),
+        const Positioned(
+          top: kToolbarHeight + 16.0,
+          left: 16.0,
+          child: BackButton(
+            color: Colors.white,
           ),
         ),
       ],

@@ -19,7 +19,9 @@ abstract class DioModule {
   List<Interceptor> get interceptors => [
         TokenInterceptor(),
         ValidatorInterceptor(),
-        LogInterceptor(),
+        LogInterceptor(
+          responseBody: true,
+        ),
       ];
 }
 

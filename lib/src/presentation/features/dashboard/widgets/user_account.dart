@@ -19,7 +19,7 @@ class UserAccountTag extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: Get.theme.colorScheme.onPrimary,
+          color: Get.theme.colorScheme.secondary,
           borderRadius: BorderRadius.circular(20.0),
         ),
         padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),

@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Material App',
+      title: 'ObservApp',
       debugShowCheckedModeBanner: false,
       theme: ColorPalete.themeData,
       getPages: [

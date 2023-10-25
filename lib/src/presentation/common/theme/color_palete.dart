@@ -13,8 +13,8 @@ abstract class ColorPalete {
 
   // Configuracion de paleta de colores
   static const ColorScheme colorScheme = ColorScheme(
-    primary: Color.fromARGB(255, 54, 188, 221),
-    secondary: Color.fromARGB(255, 127, 240, 255),
+    primary: Color(0xFF226fc3),
+    secondary: Color(0xFF74d1e9),
     tertiary: Color.fromARGB(255, 171, 252, 255),
     surface: Color.fromARGB(255, 119, 119, 119),
     background: Color.fromARGB(255, 253, 253, 253),
