@@ -72,15 +72,34 @@ class LoginScreen extends GetView<LoginCtrl> {
           ],
         ),
       ),
-      bottomNavigationBar: SizedBox(
-        height: 80,
-        child: Center(
-          child: TextButton(
-            onPressed: () {
-              controller.goToRegister();
-            },
-            child: const Text('¿No tienes una cuenta? Registrate'),
-          ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextButton(
+              onPressed: () {
+                controller.goToRegister();
+              },
+              child: const Text('¿No tienes una cuenta? Registrate'),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Row(
+              children: [
+                Image.asset(
+                  "assets/img/logo.png",
+                  width: 200,
+                ),
+                const Spacer(),
+                Image.asset(
+                  "assets/img/colombia.png",
+                  width: 50,
+                ),
+              ],
+            ),
+          ],
         ),
       ),
     );
