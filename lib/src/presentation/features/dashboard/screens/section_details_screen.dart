@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile_opservapp/src/presentation/features/features.dart';
+import 'package:mobile_opservapp/src/src.dart';
 
 class SectionDetailsScreen extends GetView<SectionDetailsController> {
   const SectionDetailsScreen({super.key});
@@ -85,7 +86,7 @@ class SubSectionCard extends StatelessWidget {
               borderRadius:
                   const BorderRadius.vertical(top: Radius.circular(10)),
               child: Image.network(
-                "http://192.168.9.42:8080/observapp/v1/storage/$image",
+                "$baseUrl$sectionsDomainEndpoint/storage/$image",
                 height: 130,
                 width: double.infinity,
                 fit: BoxFit.cover,

@@ -1,2 +1,2 @@
-const baseUrl = "http://192.168.9.42:8080";
+const baseUrl = "http://54.237.27.88/";
 const sectionsDomainEndpoint = "/observapp/v1/";

@@ -1,3 +1,4 @@
+import 'package:awesome_icons/awesome_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mobile_opservapp/lib.dart';
@@ -55,7 +56,96 @@ class DashboardScreen extends GetView<DashboardController> {
           ),
           DashboardSection(
             title: "Sobre nosotros",
-            children: [],
+            children: [
+              const Text(
+                "VALLEDUPAR CHAMBER OF COMMERCE FOR THE CESAR RIVER VALLEY",
+                style: TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 20.0),
+              const Divider(),
+              const SizedBox(height: 20.0),
+              Text(
+                "Social Medias",
+                style: TextStyle(
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
+              ),
+              const SizedBox(height: 10.0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  FontAwesomeIcons.facebook,
+                  FontAwesomeIcons.twitter,
+                  FontAwesomeIcons.instagram,
+                  FontAwesomeIcons.youtube,
+                ]
+                    .map((e) => Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                          child: Icon(e, size: 25.0),
+                        ))
+                    .toList(),
+              ),
+              const SizedBox(height: 20.0),
+              const Divider(),
+              const SizedBox(height: 20.0),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    "Main Headquarters:",
+                    style: TextStyle(
+                      fontSize: 12.0,
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                  ),
+                  Text(
+                    "Calle 15 No. 4 – 33 Valledupar – Cesar",
+                    style: TextStyle(
+                      fontSize: 12.0,
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                  ),
+                  const SizedBox(height: 10.0),
+                  Text(
+                    "Reciving Office:",
+                    style: TextStyle(
+                      fontSize: 12.0,
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                  ),
+                  Text(
+                    "Carrera 4 No. 15 – 36 Valledupar – Cesar",
+                    style: TextStyle(
+                      fontSize: 12.0,
+                      fontWeight: FontWeight.bold,
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 50.0),
+              Row(
+                children: [
+                  Image.asset("assets/img/govco.png", width: 200.0),
+                  const Spacer(),
+                  Image.asset("assets/img/colombia.png", width: 80.0),
+                ],
+              ),
+            ],
             icon: const Icon(Icons.info_outline, size: 40.0),
           ),
           DashboardSection(
@@ -117,7 +207,7 @@ class SectionCard extends StatelessWidget {
               borderRadius:
                   const BorderRadius.vertical(top: Radius.circular(10)),
               child: Image.network(
-                "http://192.168.9.42:8080/observapp/v1/storage/$image",
+                "$baseUrl$sectionsDomainEndpoint/storage/$image",
                 height: 100,
                 width: double.infinity,
                 fit: BoxFit.cover,

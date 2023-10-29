@@ -5,9 +5,9 @@ import 'package:get/get.dart';
 import 'package:mobile_opservapp/lib.dart';
 
 void main() {
-  runZonedGuarded(() {
+  runZonedGuarded(() async {
     WidgetsFlutterBinding.ensureInitialized();
-    configureDependencies();
+    await configureDependencies();
 
     runApp(const MyApp());
   }, handlerException);
