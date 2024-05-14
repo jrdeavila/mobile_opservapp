@@ -8,9 +8,7 @@ class SectionDetailsController extends GetxController {
   SectionDetailsController(this.section);
 
   String get title => _extendedSection.value?.title ?? section.title;
-  String get description =>
-      _extendedSection.value?.description ??
-      "Descripción de la sección, puede ser muy larga";
+
   String get image => _extendedSection.value?.image ?? section.image;
   List<SubSection> get subSections =>
       _extendedSection.value?.subSections.toList() ?? [];

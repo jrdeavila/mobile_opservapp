@@ -8,7 +8,7 @@ class UrlLauncherSectionDashboardService implements ISectionDashboardService {
   UrlLauncherSectionDashboardService(this._urlLauncher);
   @override
   Future<void> showSectionDashboard(SubSection section) {
-    Uri uri = Uri.parse(section.dashboardUrl);
+    Uri uri = Uri.parse("http://24.199.78.175/metabase/public/dashboard/");
     return _urlLauncher.launchUrl(uri);
   }
 }

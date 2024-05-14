@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:mobile_opservapp/src/presentation/features/features.dart';
 import 'package:mobile_opservapp/src/src.dart';
 
 class SectionDetailsScreen extends GetView<SectionDetailsController> {
@@ -14,13 +13,6 @@ class SectionDetailsScreen extends GetView<SectionDetailsController> {
           DashboardSection(
               title: controller.title,
               children: [
-                Text(
-                  controller.description,
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.onSecondary,
-                  ),
-                ),
-                const SizedBox(height: 40.0),
                 Obx(() => Column(
                       children: [
                         ...controller.subSections
@@ -86,7 +78,7 @@ class SubSectionCard extends StatelessWidget {
               borderRadius:
                   const BorderRadius.vertical(top: Radius.circular(10)),
               child: Image.network(
-                "$baseUrl$sectionsDomainEndpoint/storage/$image",
+                "$baseUrl/o/storage/$image",
                 height: 130,
                 width: double.infinity,
                 fit: BoxFit.cover,

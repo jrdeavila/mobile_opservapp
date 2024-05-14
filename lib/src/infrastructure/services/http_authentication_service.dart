@@ -9,7 +9,7 @@ class HttpAuthenticationService implements IAuthenticationService {
 
   @override
   Future<User> getUser() {
-    return _httpClient.post("/auth/v1/client/me").then(
+    return _httpClient.post("/a/client/me").then(
           (value) => userFromJSON(value),
         );
   }
@@ -17,7 +17,7 @@ class HttpAuthenticationService implements IAuthenticationService {
   @override
   Future<String> login(String email, String password) {
     return _httpClient.post(
-      "/auth/v1/client/login",
+      "/a/client/login",
       data: {
         "email": email,
         "password": password,
@@ -29,12 +29,12 @@ class HttpAuthenticationService implements IAuthenticationService {
 
   @override
   Future<void> logout() {
-    return _httpClient.post("/auth/v1/client/logout");
+    return _httpClient.post("/a/client/logout");
   }
 
   @override
   Future<String> refreshToken() {
-    return _httpClient.post("/auth/v1/client/refresh-token").then(
+    return _httpClient.post("/a/client/refresh-token").then(
           (value) => value["access_token"],
         );
   }
@@ -43,7 +43,7 @@ class HttpAuthenticationService implements IAuthenticationService {
   Future<String> register(
       String name, String email, String password, String confirmPassword) {
     return _httpClient.post(
-      "/auth/v1/client/register",
+      "/a/client/register",
       data: {
         "name": name,
         "email": email,
