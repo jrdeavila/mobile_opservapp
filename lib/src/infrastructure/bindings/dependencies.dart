@@ -14,7 +14,7 @@ abstract class DioModule {
           "X-Metabase-Session": "1d603365-60e8-49a9-86f7-5ea28acff4d1",
           'Content-Type': 'application/json',
           'Accept': 'application/json',
-          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Origin': 'https://observapp.web.app',
           'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
         },
         connectTimeout: const Duration(seconds: 5),
