@@ -3,7 +3,7 @@ import 'package:injectable/injectable.dart';
 import 'package:mobile_opservapp/lib.dart';
 
 @injectable
-class ValidatorInterceptor extends Interceptor {
+class DioValidatorInterceptor extends Interceptor {
   final IValidatorService _validatorService = getIt();
 
   @override
@@ -19,7 +19,7 @@ class ValidatorInterceptor extends Interceptor {
 }
 
 @injectable
-class TokenInterceptor extends Interceptor {
+class DioTokenInterceptor extends Interceptor {
   final TokenRepository _repository = getIt();
 
   @override

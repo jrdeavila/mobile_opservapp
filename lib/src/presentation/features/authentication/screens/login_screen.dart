@@ -13,6 +13,10 @@ class LoginScreen extends GetView<LoginCtrl> {
           children: [
             const LoginHeader(title: "Iniciar sesión"),
             Container(
+                constraints: BoxConstraints(
+                  minWidth: 300,
+                  maxWidth: 500,
+                ),
                 padding: const EdgeInsets.all(20),
                 child: Obx(
                   () => Column(

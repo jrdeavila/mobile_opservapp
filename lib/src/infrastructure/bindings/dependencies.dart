@@ -6,19 +6,28 @@ import 'package:shared_preferences/shared_preferences.dart';
 @module
 abstract class DioModule {
   @lazySingleton
-  Dio get dio => Dio(
-        BaseOptions(
-          baseUrl: baseUrl,
-          followRedirects: false,
-          headers: {
-            "X-Metabase-Session": "1d603365-60e8-49a9-86f7-5ea28acff4d1",
-          },
-        ),
-      )..interceptors.addAll(interceptors);
+  Dio get dio {
+    var dio = Dio(
+      BaseOptions(
+        baseUrl: baseUrl,
+        headers: {
+          "X-Metabase-Session": "1d603365-60e8-49a9-86f7-5ea28acff4d1",
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+        },
+        connectTimeout: const Duration(seconds: 5),
+        receiveTimeout: const Duration(seconds: 5),
+      ),
+    );
+    dio.interceptors.addAll(interceptors);
+    return dio;
+  }
 
   List<Interceptor> get interceptors => [
-        TokenInterceptor(),
-        ValidatorInterceptor(),
+        DioTokenInterceptor(),
+        DioValidatorInterceptor(),
         LogInterceptor(
           responseBody: true,
         ),

@@ -10,20 +10,24 @@ class DashboardScreen extends GetView<DashboardController> {
 
   @override
   Widget build(BuildContext context) {
+    final isPhone = MediaQuery.of(context).size.width < 600;
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.onPrimary,
       body: DashboardView(
         sections: [
           DashboardSection(
-            title: "Indicadores Socioeconomicos",
+            title: "Indicadores Socioeconómicos",
             children: [
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: Obx(
                   () {
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
+                    return Wrap(
+                      alignment:
+                          isPhone ? WrapAlignment.start : WrapAlignment.center,
+                      spacing: 20.0,
+                      runSpacing: 20.0,
                       children: [
                         ...controller.sections.map((e) => SectionCard(
                             title: e.title,
@@ -36,7 +40,8 @@ class DashboardScreen extends GetView<DashboardController> {
                   },
                 ),
               ),
-              const SizedBox(height: 20.0),
+            ],
+            footerChildren: [
               Row(
                 children: [
                   Image.asset(
@@ -185,17 +190,24 @@ class SectionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cardWidth = MediaQuery.of(context).size.width > 600 ? 400.0 : 300.0;
+    final cardHeight = MediaQuery.of(context).size.width > 600 ? 300.0 : 200.0;
     return GestureDetector(
       onTap: onTap,
       child: Container(
         margin: const EdgeInsets.only(bottom: 20.0),
-        width: double.infinity,
+        width: cardWidth,
+        height: cardHeight,
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.onPrimary,
           borderRadius: BorderRadius.circular(10),
+          border: Border.all(
+            color: Theme.of(context).colorScheme.primary,
+            width: 2,
+          ),
           boxShadow: [
             BoxShadow(
-              color: Theme.of(context).colorScheme.primary.withOpacity(0.2),
+              color: Colors.black.withOpacity(0.2),
               blurRadius: 10,
               offset: const Offset(0, 2),
             ),
@@ -203,26 +215,40 @@ class SectionCard extends StatelessWidget {
         ),
         child: Column(
           children: [
-            ClipRRect(
-              borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(10)),
-              child: Image.network(
-                "$baseUrl$sectionsDomainEndpoint/storage/$image",
-                height: 100,
-                width: double.infinity,
-                fit: BoxFit.cover,
+            Expanded(
+              child: ClipRRect(
+                borderRadius:
+                    const BorderRadius.vertical(top: Radius.circular(10)),
+                child: Image.network(
+                  "$baseUrl$sectionsDomainEndpoint/storage/$image",
+                  height: 100,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
+            Divider(color: Theme.of(context).colorScheme.primary),
             Padding(
               padding:
-                  const EdgeInsets.symmetric(vertical: 15.0, horizontal: 5.0),
-              child: Text(
-                title,
-                style: TextStyle(
-                  color: Theme.of(context).colorScheme.primary,
-                  fontSize: 20,
-                ),
-                textAlign: TextAlign.center,
+                  const EdgeInsets.symmetric(vertical: 15.0, horizontal: 10.0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Text(
+                      title,
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.primary,
+                        fontSize: 20,
+                      ),
+                      textAlign: TextAlign.start,
+                    ),
+                  ),
+                  Icon(
+                    FontAwesomeIcons.chevronCircleRight,
+                    color: Theme.of(context).colorScheme.primary,
+                  )
+                ],
               ),
             ),
           ],

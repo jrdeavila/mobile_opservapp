@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:flutter/foundation.dart';
 import 'package:mobile_opservapp/lib.dart';
 
 void handlerException(
@@ -9,5 +10,7 @@ void handlerException(
   final handler = getIt<IHandlerExceptionService>();
   handler.handlerException(exception, stack);
   log("=================== Handler Exception ===================");
-  log("Exception", error: exception);
+  if (kDebugMode) {
+    print(exception);
+  }
 }

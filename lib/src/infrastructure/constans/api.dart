@@ -1,2 +1,5 @@
-const baseUrl = "http://24.199.78.175/api";
+const host = "24.199.78.175";
+
+const baseUrl = "http://$host/api";
+
 const sectionsDomainEndpoint = "/o/";

@@ -13,6 +13,10 @@ class RegisterScreen extends GetView<RegisterController> {
           children: [
             const LoginHeader(title: "Registrarse"),
             Container(
+                constraints: const BoxConstraints(
+                  minWidth: 300,
+                  maxWidth: 500,
+                ),
                 padding: const EdgeInsets.all(20),
                 child: Obx(
                   () => Column(

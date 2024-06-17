@@ -9,6 +9,7 @@ abstract class ColorPalete {
     timePickerTheme: timePickerTheme,
     datePickerTheme: datePickerTheme,
     useMaterial3: true,
+    fontFamily: "Geomanist",
   );
 
   // Configuracion de paleta de colores

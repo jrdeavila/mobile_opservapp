@@ -13,7 +13,7 @@ class SectionDetailsScreen extends GetView<SectionDetailsController> {
           DashboardSection(
               title: controller.title,
               children: [
-                Obx(() => Column(
+                Obx(() => Wrap(
                       children: [
                         ...controller.subSections
                             .map((subSection) => SubSectionCard(
@@ -56,14 +56,21 @@ class SubSectionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cardWidth = MediaQuery.of(context).size.width > 600 ? 400.0 : 300.0;
+    final cardHeight = MediaQuery.of(context).size.width > 600 ? 300.0 : 200.0;
     return GestureDetector(
       onTap: onTap,
       child: Container(
         margin: const EdgeInsets.only(bottom: 20.0),
-        width: double.infinity,
+        height: cardHeight,
+        width: cardWidth,
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.onPrimary,
           borderRadius: BorderRadius.circular(10),
+          border: Border.all(
+            color: Theme.of(context).colorScheme.primary,
+            width: 2,
+          ),
           boxShadow: [
             BoxShadow(
               color: Theme.of(context).colorScheme.primary.withOpacity(0.2),
@@ -73,16 +80,22 @@ class SubSectionCard extends StatelessWidget {
           ],
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ClipRRect(
-              borderRadius:
-                  const BorderRadius.vertical(top: Radius.circular(10)),
-              child: Image.network(
-                "$baseUrl/o/storage/$image",
-                height: 130,
-                width: double.infinity,
-                fit: BoxFit.cover,
+            Expanded(
+              child: ClipRRect(
+                borderRadius:
+                    const BorderRadius.vertical(top: Radius.circular(10)),
+                child: Image.network(
+                  "$baseUrl/o/storage/$image",
+                  height: 130,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
               ),
+            ),
+            Divider(
+              color: Theme.of(context).colorScheme.primary,
             ),
             Padding(
               padding:

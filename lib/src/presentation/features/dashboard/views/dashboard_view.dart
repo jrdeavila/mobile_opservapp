@@ -4,6 +4,7 @@ import 'package:mobile_opservapp/src/presentation/features/features.dart';
 class DashboardSection {
   final String title;
   final List<Widget> children;
+  final List<Widget> footerChildren;
   final Icon icon;
   final bool isExpanded;
   final bool isEndSection;
@@ -13,6 +14,7 @@ class DashboardSection {
   DashboardSection({
     required this.title,
     required this.children,
+    this.footerChildren = const [],
     required this.icon,
     this.isExpanded = false,
     this.isEndSection = false,
@@ -70,27 +72,34 @@ class _DashboardViewState extends State<DashboardView> {
             left: 20,
             right: 10,
           ),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: kToolbarHeight + 16),
-                _buildTopBar(),
-                const SizedBox(height: 20),
-                Text(
-                  title.toUpperCase(),
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.onSecondary,
-                    fontSize: 22.0,
-                    fontWeight: FontWeight.bold,
+          child: Column(
+            children: [
+              Expanded(
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const SizedBox(height: kToolbarHeight + 16),
+                      _buildTopBar(),
+                      const SizedBox(height: 20),
+                      Text(
+                        title.toUpperCase(),
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.onSecondary,
+                          fontSize: 22.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.start,
+                      ),
+                      const SizedBox(height: 20),
+                      ...children,
+                    ],
                   ),
-                  textAlign: TextAlign.start,
                 ),
-                const SizedBox(height: 20),
-                ...children,
-              ],
-            ),
+              ),
+              ...widget.sections[_currentSectionIndex].footerChildren,
+            ],
           ),
         ),
       ),
